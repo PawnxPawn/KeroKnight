@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ed1g322fea47"]
+
+[node name="GameController" type="Node3D"]
+
+[node name="LevelController" type="Node3D" parent="."]
+
+[node name="SoundController" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.677749, 0.735293, 0, -0.735293, 0.677749, 0.470199, 6.19405, 3.96338)
