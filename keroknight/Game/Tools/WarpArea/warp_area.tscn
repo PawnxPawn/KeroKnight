@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://5coi3bu288rs"]
+
+[ext_resource type="Script" path="res://Game/Tools/WarpArea/warp_area.gd" id="1_ws8fv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkl20"]
+
+[node name="WarpArea" type="Area3D"]
+script = ExtResource("1_ws8fv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fkl20")
