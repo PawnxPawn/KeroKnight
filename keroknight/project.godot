@@ -56,6 +56,14 @@ Select={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Enviornment"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemies"
+3d_physics/layer_4="Platforms"
+3d_physics/layer_5="Warps"
+
 [shader_globals]
 
 sgt_player_position={

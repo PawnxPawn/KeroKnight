@@ -26,9 +26,6 @@ tonemap_white = 6.0
 
 [node name="GameController" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.99965, -0.0136003, 0.0226709, 0.00161813, 0.887398, 0.461001, -0.0263878, -0.460803, 0.88711, 0.470199, 5.14701, 7.34307)
-
 [node name="LevelController" type="Node3D" parent="."]
 
 [node name="ForestLevel" parent="LevelController" instance=ExtResource("1_6e511")]
