@@ -17,10 +17,13 @@ var get_current_state: State:
 func init(parent:Character) -> void:
 	for child in get_children():
 		child.parent = parent
-	
-	change_state(starting_state)
+	change_state(starting_state.name)
 
-func change_state(new_state: State) -> void:
+func change_state(new_state_string: String) -> void:
+	var new_state = find_state(new_state_string)
+	if not new_state:
+		push_error("Current State: %s NOT FOUND" % new_state_string)
+	
 	if _current_state:
 		_current_state.exit()
 	
@@ -44,3 +47,9 @@ func process_frame(delta: float) -> void:
 	var new_state = _current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+
+func find_state(state_search:String) -> State:
+	for state in state_list:
+		if state.name == state_search:
+			return state
+	return null

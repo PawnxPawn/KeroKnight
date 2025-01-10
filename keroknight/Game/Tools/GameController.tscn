@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ed1g322fea47"]
+[gd_scene load_steps=10 format=3 uid="uid://ed1g322fea47"]
 
 [ext_resource type="PackedScene" uid="uid://ds6k7uv7t7kau" path="res://Game/Levels/forest_level.tscn" id="1_6e511"]
 [ext_resource type="Script" path="res://addons/sky_3d/src/Sky3D.gd" id="2_aw5x1"]
 [ext_resource type="Script" path="res://addons/sky_3d/src/TimeOfDay.gd" id="3_f4vhj"]
 [ext_resource type="Script" path="res://addons/sky_3d/src/Skydome.gd" id="4_5nndi"]
+[ext_resource type="PackedScene" uid="uid://b3a121qkwyuvo" path="res://Entities/Player/KeroKnight.tscn" id="5_4x4ex"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_d44m3"]
 use_debanding = false
@@ -25,14 +26,14 @@ tonemap_white = 6.0
 
 [node name="GameController" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.99965, -0.0136003, 0.0226709, 0.00161813, 0.887398, 0.461001, -0.0263878, -0.460803, 0.88711, 0.470199, 5.14701, 7.34307)
+
 [node name="LevelController" type="Node3D" parent="."]
 
 [node name="ForestLevel" parent="LevelController" instance=ExtResource("1_6e511")]
 
 [node name="SoundController" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.677749, 0.735293, 0, -0.735293, 0.677749, 0.470199, 6.19405, -13.7223)
 
 [node name="Sky3D" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_whojk")
@@ -162,3 +163,6 @@ clouds_cumulus_direction = Vector3(0.25, 0.1, 0.25)
 clouds_cumulus_speed = 0.05
 set_clouds_cumulus_texture = false
 environment = SubResource("Environment_whojk")
+
+[node name="KeroKnight" parent="." instance=ExtResource("5_4x4ex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93874, 3.07586)

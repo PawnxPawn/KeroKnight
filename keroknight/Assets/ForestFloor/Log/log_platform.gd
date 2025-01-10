@@ -1,15 +1,15 @@
 extends AnimatableBody3D
-const Globals := preload("res://Globals.gd")
+const g := preload("res://Game/Tools/Globals.gd")
 
 @export var move_speed:float
-@export var set_direction:Globals.Direction
+@export var set_direction:g.Direction
 
 var move_direction:Vector3 = Vector3.ZERO
 
 func _ready() -> void:
-	if set_direction == Globals.Direction.LEFT:
+	if set_direction == g.Direction.LEFT:
 		move_direction = Vector3.LEFT
-	elif set_direction == Globals.Direction.RIGHT:
+	elif set_direction == g.Direction.RIGHT:
 		move_direction = Vector3.RIGHT
 
 func _physics_process(delta: float) -> void:

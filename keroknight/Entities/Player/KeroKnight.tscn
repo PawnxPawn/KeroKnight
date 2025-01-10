@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3a121qkwyuvo"]
+[gd_scene load_steps=7 format=3 uid="uid://b3a121qkwyuvo"]
 
 [ext_resource type="Script" path="res://Entities/Player/KeroKnight.gd" id="1_pf05d"]
 [ext_resource type="Script" path="res://Game/Tools/StateMachine/state_machine.gd" id="1_vajw3"]
 [ext_resource type="Script" path="res://Entities/Player/states/player_idle_state.gd" id="3_31gal"]
+[ext_resource type="Script" path="res://Entities/Player/states/player_move_state.gd" id="4_eqjla"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1ov20"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qh8u6"]
 
-[node name="KeroKnight" type="CharacterBody3D"]
+[node name="KeroKnight" type="CharacterBody3D" node_paths=PackedStringArray("move_cool_down_timer")]
 script = ExtResource("1_pf05d")
+move_cool_down_timer = NodePath("CharacterTimers/MoveCoolDownTimer")
+move_speed = 1.0
+jump_velocity = 200.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1ov20")
@@ -20,7 +24,16 @@ shape = SubResource("BoxShape3D_qh8u6")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "state_list")]
 script = ExtResource("1_vajw3")
 starting_state = NodePath("IdleState")
-state_list = [null]
+state_list = [NodePath("IdleState"), NodePath("MoveState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("3_31gal")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("4_eqjla")
+
+[node name="CharacterTimers" type="Node" parent="."]
+
+[node name="MoveCoolDownTimer" type="Timer" parent="CharacterTimers"]
+wait_time = 0.25
+one_shot = true
