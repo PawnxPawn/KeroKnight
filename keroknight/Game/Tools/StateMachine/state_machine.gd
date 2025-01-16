@@ -25,15 +25,14 @@ func init(parent:Character) -> void:
 		if child is State:
 			_state_list.push_back(child)
 			child.parent = parent
-	change_state(starting_state.name)
+	change_state(starting_state)
 
 ## new_state_name should be the same as the node name
 #TODO: Find a better way to call the state node.
 #NOTE: Use global const or enum for now.
-func change_state(new_state_name: String) -> void:
-	var new_state = find_state(new_state_name)
+func change_state(new_state: State) -> void:
 	if not new_state:
-		push_error("Current State: %s NOT FOUND" % new_state_name)
+		push_error("Current State: %s NOT FOUND" % new_state)
 	
 	if _current_state:
 		_current_state.exit()
@@ -42,30 +41,5 @@ func change_state(new_state_name: String) -> void:
 	
 	_current_state = new_state
 	_current_state.enter()
-
-# Pass through functions for the Characters
-func process_physics(delta: float) -> void:
-	var new_state = _current_state.process_physics(delta)
-	if new_state:
-		change_state(new_state)
-
-func process_input(event: InputEvent) -> void:
-	var new_state = _current_state.process_input(event)
-	if new_state:
-		change_state(new_state)
-
-func process_frame(delta: float) -> void:
-	var new_state = _current_state.process_frame(delta)
-	if new_state:
-		change_state(new_state)
-
-# Helper Functions 
-
-#TEST: Alternatives for faster searching to handle larger state machines. O(n)
-func find_state(state_search:String) -> State:
-	for state in _state_list:
-		if state.name == state_search:
-			return state
-	return null
 
 #TODO: Implement On_Hit/Damage_Taken function for both State and state machine.

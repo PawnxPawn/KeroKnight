@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3a121qkwyuvo"]
+
+[ext_resource type="Script" path="res://Entities/Player/KeroKnight.gd" id="1_pf05d"]
+[ext_resource type="Script" path="res://Game/Tools/StateMachine/state_machine.gd" id="1_vajw3"]
+[ext_resource type="PackedScene" uid="uid://cnarhejm5ex58" path="res://Entities/Player/KeroKnight/Frogemann.gltf" id="2_qgykm"]
+[ext_resource type="Script" path="res://Entities/Player/states/player_idle_state.gd" id="3_31gal"]
+[ext_resource type="Script" path="res://Entities/Player/states/player_move_state.gd" id="4_eqjla"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh8u6"]
+
+[node name="KeroKnight" type="CharacterBody3D" node_paths=PackedStringArray("camera_controller", "anim_player_node")]
+collision_layer = 2
+collision_mask = 9
+platform_on_leave = 2
+script = ExtResource("1_pf05d")
+camera_controller = NodePath("CameraController")
+anim_player_node = NodePath("KeroKnight/AnimationPlayer")
+move_speed = 2.0
+
+[node name="KeroKnight" parent="." instance=ExtResource("2_qgykm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.517226, 0.0185558)
+
+[node name="Waist" parent="KeroKnight/Node_45" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.884988, 0.465614, 0, -0.465614, 0.884988, -2.31296e-18, 0.0703125, -0.0125)
+
+[node name="Chest" parent="KeroKnight/Node_45/Waist" index="0"]
+transform = Transform3D(0.62932, -7.10749e-09, -0.777146, -7.10749e-09, 1, -1.49012e-08, 0.777146, 1.49012e-08, 0.62932, 0, 0.0185609, -0.00526712)
+
+[node name="Head" parent="KeroKnight/Node_45/Waist/Chest" index="1"]
+transform = Transform3D(0.681998, 0.183116, 0.708058, -1.49012e-08, 0.968148, -0.25038, -0.731354, 0.170759, 0.660275, 0, 0.253314, 0.00526711)
+
+[node name="Larm" parent="KeroKnight/Node_45/Waist/Chest" index="2"]
+transform = Transform3D(0.512837, 0.668528, -0.53858, -0.794775, 0.606895, -0.00346042, 0.324548, 0.429825, 0.842567, -0.125, 0.222064, 0.00526712)
+
+[node name="Llarm" parent="KeroKnight/Node_45/Waist/Chest/Larm/LuArm" index="0"]
+transform = Transform3D(0.95882, 0.284015, -4.26543e-09, -0.284015, 0.95882, -3.18515e-09, 3.18515e-09, 4.26543e-09, 1, 0, -0.1, 0)
+
+[node name="Lhand" parent="KeroKnight/Node_45/Waist/Chest/Larm/LuArm/Llarm" index="0"]
+transform = Transform3D(0.93358, 0.358368, -2.21592e-09, -0.358368, 0.93358, 2.33732e-09, 2.90636e-09, -1.38797e-09, 1, -0.003125, -0.125, 0)
+
+[node name="Mantle" parent="KeroKnight/Node_45/Waist/Chest" index="3"]
+transform = Transform3D(0.905925, 0.0607522, 0.419056, 0.236149, 0.74897, -0.619094, -0.351472, 0.659813, 0.664165, 0, 0.261127, 0.0693296)
+
+[node name="Rarm" parent="KeroKnight/Node_45/Waist/Chest" index="4"]
+transform = Transform3D(0.304864, -0.704981, -0.640359, 0.952396, 0.225666, 0.204981, -2.98023e-08, -0.672367, 0.740218, 0.125, 0.222064, 0.00526712)
+
+[node name="RuArm" parent="KeroKnight/Node_45/Waist/Chest/Rarm" index="0"]
+transform = Transform3D(1, 1.58325e-08, -4.65661e-09, -1.58325e-08, 1, 5.58794e-09, 4.65661e-09, -5.58794e-09, 1, 0, 0, 0)
+
+[node name="Rlarm" parent="KeroKnight/Node_45/Waist/Chest/Rarm/RuArm" index="0"]
+transform = Transform3D(1, -3.03485e-09, 4.41573e-09, 4.41573e-09, 0.93358, -0.358368, -3.03485e-09, 0.358368, 0.93358, 0, -0.1, 0)
+
+[node name="Sword" parent="KeroKnight/Node_45/Waist/Chest/Rarm/RuArm/Rlarm/Rhand" index="1"]
+transform = Transform3D(1, 1.04083e-16, 1.39698e-08, 1.04083e-16, 1, -1.49012e-08, -1.39698e-08, 1.49012e-08, 1, 0, -0.025, 0)
+
+[node name="Lleg" parent="KeroKnight/Node_45/Waist" index="1"]
+transform = Transform3D(0.720044, 0.477537, -0.503483, 0.367309, -0.877859, -0.307323, -0.588746, 0.0363526, -0.8075, -0.0515625, -0.014375, 0)
+
+[node name="Llleg" parent="KeroKnight/Node_45/Waist/Lleg" index="0"]
+transform = Transform3D(1, -3.00098e-08, 9.03445e-08, -9.03445e-08, -0.598325, 0.801254, 3.00098e-08, -0.801254, -0.598325, 0, -0.334375, 0)
+
+[node name="Lfoot" parent="KeroKnight/Node_45/Waist/Lleg/Llleg" index="0"]
+transform = Transform3D(1, 1.11653e-08, 5.55705e-09, 2.31771e-09, 0.27144, -0.962455, -1.22545e-08, 0.962455, 0.27144, 0.00156248, -0.316875, 0)
+
+[node name="Rleg" parent="KeroKnight/Node_45/Waist" index="2"]
+transform = Transform3D(0.60155, -0.472407, 0.644181, -0.253318, -0.877589, -0.407022, 0.757606, 0.0816618, -0.647583, 0.0515625, -0.014375, 0)
+
+[node name="Rlleg" parent="KeroKnight/Node_45/Waist/Rleg" index="0"]
+transform = Transform3D(1, -1.66493e-07, -3.72918e-08, -3.72918e-08, -0.426569, 0.904455, -1.66493e-07, -0.904455, -0.426569, 0, -0.334375, 0)
+
+[node name="Rfoot" parent="KeroKnight/Node_45/Waist/Rleg/Rlleg" index="0"]
+transform = Transform3D(0.845568, 0.524536, -0.0993824, -0.292066, 0.298676, -0.908565, -0.446891, 0.79728, 0.40575, -0.00156252, -0.316875, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qh8u6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("1_vajw3")
+starting_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_31gal")
+
+[node name="MoveState" type="Node" parent="StateMachine"]
+script = ExtResource("4_eqjla")
+
+[node name="CharacterTimers" type="Node" parent="."]
+
+[node name="MoveCoolDownTimer" type="Timer" parent="CharacterTimers"]
+wait_time = 0.25
+one_shot = true
+
+[node name="CameraController" type="Node3D" parent="."]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.965704, 0.259645, 0, -0.259645, 0.965704, 0, 3, 4)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget"]
+current = true
+fov = 90.0
+
+[editable path="KeroKnight"]

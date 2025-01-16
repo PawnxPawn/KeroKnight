@@ -17,7 +17,7 @@ const INPUT_SELECT = "Select"
 
 #Animations
 const ANIM_IDLE = "Idle"
-const ANIM_MOVE = "Move"
+const ANIM_MOVE = "Hop"
 
 #States
 const STATE_IDLE = "IdleState"

@@ -162,4 +162,4 @@ set_clouds_cumulus_texture = false
 environment = SubResource("Environment_whojk")
 
 [node name="KeroKnight" parent="." instance=ExtResource("5_4x4ex")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93874, 3.07586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13015, 3.07586)

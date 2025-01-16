@@ -4,7 +4,10 @@ extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	area_entered.connect(_handle_position_reset)
+	body_entered.connect(_handle_position_reset)
+	warp_position = Vector3(warp_position.x, global_position.y, warp_position.z)
+	
 
-func _handle_position_reset(area:Area3D) -> void:
-	area.get_parent().global_position = warp_position
+func _handle_position_reset(body:Node3D) -> void:
+	body.warp_location = warp_position
+	body.can_warp = true
